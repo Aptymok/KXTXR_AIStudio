@@ -1,0 +1,18 @@
+{
+  "name": "KXTXR",
+  "short_name": "KXTXR",
+  "description": "Musical and audiovisual identity: signal, memory, transformation and return.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/assets/system/kxtxr-system-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

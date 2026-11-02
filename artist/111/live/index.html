@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <title>KXTXR · 111 / LIVE RETURN</title>
+  <meta name="description" content="KXTXR 111 persistent live countdown transmission.">
+  <link rel="stylesheet" href="/artist/111/live/live.css?v=20260824-bg1">
+  <style>
+    .release-video{position:absolute;inset:0;z-index:14;background:#000;opacity:0;visibility:hidden;transition:opacity .75s cubic-bezier(.2,.7,.1,1),visibility 0s linear .75s;overflow:hidden}
+    .release-video[hidden]{display:none}
+    .release-video__player,.release-video__player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+    .release-video::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.12;background:repeating-linear-gradient(180deg,transparent 0 4px,rgba(226,199,158,.05) 4px 5px,transparent 5px 9px);mix-blend-mode:screen}
+    .release-video__mark{position:absolute;z-index:4;left:3.2%;bottom:3%;font-size:clamp(5px,.62vw,12px);letter-spacing:.18em;color:rgba(226,199,158,.48);text-transform:uppercase;pointer-events:none;text-shadow:0 0 8px #000}
+    .kx-live.is-video-release .release-video{opacity:1;visibility:visible;transition-delay:0s}
+    .kx-live.is-video-release .count-stage{opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s}
+    .kx-live.is-video-release .screen-static,.kx-live.is-video-release .screen-lines,.kx-live.is-video-release .screen-sweep,.kx-live.is-video-release .screen-wave{opacity:0;transition:opacity .45s ease}
+    .release-video[data-final="held"] iframe{pointer-events:none}
+    .release-video[data-final="held"]::after{opacity:.17}
+    .release-video[data-final="held"] .release-video__mark{color:rgba(226,199,158,.62)}
+  </style>
+</head>
+<body>
+  <main class="kx-live" id="kxLive" data-state="booting">
+    <div class="ambient ambient--noise" aria-hidden="true"></div>
+    <div class="ambient ambient--lines" aria-hidden="true"></div>
+    <div class="ambient ambient--beam" aria-hidden="true"></div>
+    <div class="ambient ambient--glitch" aria-hidden="true"></div>
+
+    <section class="artboard" id="artboard" aria-label="KXTXR 111 live transmission">
+      <img class="artboard__image" src="/assets/countdown_111.png" alt="KXTXR 111 live transmission panel">
+      <div class="artboard__glitch artboard__glitch--a" aria-hidden="true"></div>
+      <div class="artboard__glitch artboard__glitch--b" aria-hidden="true"></div>
+      <div class="artboard__scan" aria-hidden="true"></div>
+
+      <section class="cycle-panel" aria-label="Cycle and state">
+        <div class="cycle-panel__primary">
+          <span class="micro-label">CYCLE</span>
+          <strong id="cycleValue">005</strong>
+        </div>
+        <div class="cycle-panel__state">
+          <span class="micro-label">STATE</span>
+          <strong id="stateValue">PRE-RELEASE</strong>
+        </div>
+        <div class="cycle-panel__trace">
+          <span id="traceValue">005 / 111</span>
+          <span id="engineValue">SYNCED</span>
+        </div>
+      </section>
+
+      <section class="signal-window" aria-label="Primary live countdown">
+        <div class="screen-static" aria-hidden="true"></div>
+        <div class="screen-lines" aria-hidden="true"></div>
+        <div class="screen-sweep" aria-hidden="true"></div>
+        <div class="screen-wave" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
+        <div class="count-stage">
+          <div class="count-cycle"><span>CYCLE</span><b id="windowCycle">005</b></div>
+          <div class="count-value" id="countValue" data-value="111">111</div>
+          <div class="count-caption" id="phaseValue">COUNTDOWN ACTIVE</div>
+          <div class="count-remaining" id="remainingValue">05:00:00</div>
+          <div class="unit-track"><i id="unitProgress"></i></div>
+          <div class="count-meta">
+            <span id="clockValue">20:11:00</span>
+            <span id="targetValue">25 AUG 2026 · 01:11</span>
+          </div>
+        </div>
+
+        <div class="release-video" id="releaseVideo" hidden aria-label="KXTXR 111 official video">
+          <div class="release-video__player" id="youtubePlayer"></div>
+          <div class="release-video__mark" id="releaseMark">111 / RETURN</div>
+        </div>
+      </section>
+
+      <section class="archive-data" aria-label="Archive live data">
+        <span class="archive-value archive-value--date" id="archiveDate">25.08.26</span>
+        <span class="archive-value archive-value--time" id="archiveTime">20:11:00</span>
+        <span class="archive-value archive-value--duration" id="archiveDuration">05:00:00</span>
+        <span class="archive-value archive-value--source">KXTXR / LIVE</span>
+        <span class="archive-value archive-value--content">111</span>
+        <span class="archive-value archive-value--notes" id="archiveNotes">CYCLE 005 / PRE-RELEASE</span>
+      </section>
+
+      <div class="pulse-flash" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const SCHEDULE = Object.freeze({
+      signal: '111',
+      timezone: 'America/Mexico_City',
+      activationAt: '2026-08-24T20:11:00-06:00',
+      releaseAt: '2026-08-25T01:11:00-06:00',
+      cycleMs: 60 * 60 * 1000,
+      unitsPerCycle: 111,
+      youtubeVideoId: 'HFO5jd4HcqM'
+    });
+
+    const activationMs = Date.parse(SCHEDULE.activationAt);
+    const releaseMs = Date.parse(SCHEDULE.releaseAt);
+    const totalCycles = Math.round((releaseMs - activationMs) / SCHEDULE.cycleMs);
+    const unitMs = SCHEDULE.cycleMs / SCHEDULE.unitsPerCycle;
+
+    const root = document.getElementById('kxLive');
+    const countValue = document.getElementById('countValue');
+    const cycleValue = document.getElementById('cycleValue');
+    const windowCycle = document.getElementById('windowCycle');
+    const stateValue = document.getElementById('stateValue');
+    const traceValue = document.getElementById('traceValue');
+    const engineValue = document.getElementById('engineValue');
+    const phaseValue = document.getElementById('phaseValue');
+    const remainingValue = document.getElementById('remainingValue');
+    const unitProgress = document.getElementById('unitProgress');
+    const clockValue = document.getElementById('clockValue');
+    const targetValue = document.getElementById('targetValue');
+    const archiveDate = document.getElementById('archiveDate');
+    const archiveTime = document.getElementById('archiveTime');
+    const archiveDuration = document.getElementById('archiveDuration');
+    const archiveNotes = document.getElementById('archiveNotes');
+    const releaseVideo = document.getElementById('releaseVideo');
+    const releaseMark = document.getElementById('releaseMark');
+
+    const params = new URLSearchParams(location.search);
+    const view = params.get('view');
+    if (view === 'obs' || view === 'clean') document.body.dataset.view = view;
+
+    const pad = (value, width = 3) => String(Math.max(0, value)).padStart(width, '0');
+
+    const clockFormatter = new Intl.DateTimeFormat('en-GB', {
+      timeZone: SCHEDULE.timezone,
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+    });
+
+    const targetFormatter = new Intl.DateTimeFormat('en-GB', {
+      timeZone: SCHEDULE.timezone,
+      day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false
+    });
+
+    const archiveDateFormatter = new Intl.DateTimeFormat('en-GB', {
+      timeZone: SCHEDULE.timezone,
+      day: '2-digit', month: '2-digit', year: '2-digit'
+    });
+
+    function duration(ms) {
+      const total = Math.ceil(Math.max(0, ms) / 1000);
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      const s = total % 60;
+      return `${pad(h, 2)}:${pad(m, 2)}:${pad(s, 2)}`;
+    }
+
+    function derive(now) {
+      if (now < activationMs) {
+        return {state:'standby', cycle:totalCycles, value:111, label:'STANDBY', phase:'SIGNAL STANDBY', remaining:activationMs-now};
+      }
+      if (now >= releaseMs) {
+        return {state:'released', cycle:0, value:111, label:'RELEASED', phase:'RETURN COMPLETE', remaining:0};
+      }
+
+      const elapsed = now - activationMs;
+      const completedCycles = Math.floor(elapsed / SCHEDULE.cycleMs);
+      const cycle = Math.max(1, totalCycles - completedCycles);
+      const withinCycle = elapsed % SCHEDULE.cycleMs;
+      const completedUnits = Math.min(110, Math.floor(withinCycle / unitMs));
+      const value = 111 - completedUnits;
+      const final = cycle === 1;
+
+      return {
+        state: final ? 'final' : 'active',
+        cycle,
+        value,
+        label: final ? 'FINAL CYCLE' : 'PRE-RELEASE',
+        phase: final ? 'FINAL RETURN SEQUENCE' : 'COUNTDOWN ACTIVE',
+        remaining: releaseMs-now,
+        unitProgress: Math.max(0, Math.min(1, (withinCycle % unitMs) / unitMs))
+      };
+    }
+
+    let lastCycle = null;
+    let lastValue = null;
+    let pulseTimer = null;
+    let releaseActivated = false;
+    let playerMounted = false;
+    let player = null;
+    let finalHoldRequested = false;
+    let finalMonitor = null;
+    let youtubeApiRequested = false;
+
+    function pulse(type) {
+      root.classList.remove('is-step','is-cycle');
+      void root.offsetWidth;
+      root.classList.add(type === 'cycle' ? 'is-cycle' : 'is-step');
+      clearTimeout(pulseTimer);
+      pulseTimer = setTimeout(() => root.classList.remove('is-step','is-cycle'), type === 'cycle' ? 900 : 360);
+    }
+
+    function requestYouTubeApi() {
+      if (window.YT && window.YT.Player) {
+        mountYouTube();
+        return;
+      }
+      if (youtubeApiRequested) return;
+      youtubeApiRequested = true;
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+
+    window.onYouTubeIframeAPIReady = () => {
+      if (releaseActivated) mountYouTube();
+    };
+
+    function markFinalHeld(target) {
+      if (finalMonitor) {
+        clearInterval(finalMonitor);
+        finalMonitor = null;
+      }
+      finalHoldRequested = true;
+      try { target?.pauseVideo?.(); } catch (_) {}
+      releaseVideo.dataset.final = 'held';
+      releaseMark.textContent = '111 / RETURN COMPLETE';
+      root.dataset.state = 'held';
+    }
+
+    function monitorFinalImage(target) {
+      if (!target || finalHoldRequested) return;
+      if (finalMonitor) clearInterval(finalMonitor);
+      finalMonitor = setInterval(() => {
+        if (finalHoldRequested) {
+          clearInterval(finalMonitor);
+          finalMonitor = null;
+          return;
+        }
+        try {
+          const videoDuration = Number(target.getDuration?.() || 0);
+          const currentTime = Number(target.getCurrentTime?.() || 0);
+          if (videoDuration > 0 && currentTime >= Math.max(0, videoDuration - 0.16)) {
+            markFinalHeld(target);
+          }
+        } catch (_) {}
+      }, 60);
+    }
+
+    function holdFinalFrame(target) {
+      if (finalHoldRequested || !target) return;
+      const videoDuration = Number(target.getDuration?.() || 0);
+      const holdAt = Math.max(0, videoDuration - 0.16);
+      releaseVideo.dataset.final = 'seeking';
+      releaseMark.textContent = '111 / RETURN COMPLETE';
+      try {
+        target.seekTo(holdAt, true);
+        setTimeout(() => markFinalHeld(target), 70);
+      } catch (_) {
+        markFinalHeld(target);
+      }
+    }
+
+    function mountYouTube() {
+      if (!releaseActivated || playerMounted || !window.YT || !window.YT.Player) return;
+      playerMounted = true;
+      player = new window.YT.Player('youtubePlayer', {
+        width: '100%',
+        height: '100%',
+        videoId: SCHEDULE.youtubeVideoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          rel: 0,
+          playsinline: 1,
+          iv_load_policy: 3,
+          fs: 1,
+          origin: location.origin
+        },
+        events: {
+          onReady: (event) => {
+            releaseVideo.dataset.ready = 'true';
+            try { event.target.playVideo(); } catch (_) {}
+          },
+          onStateChange: (event) => {
+            if (!window.YT) return;
+            if (event.data === window.YT.PlayerState.PLAYING) monitorFinalImage(event.target);
+            if (event.data === window.YT.PlayerState.ENDED) holdFinalFrame(event.target);
+          },
+          onError: () => {
+            releaseVideo.dataset.error = 'true';
+            releaseMark.textContent = '111 / OPEN SIGNAL';
+          }
+        }
+      });
+    }
+
+    function activateRelease() {
+      if (releaseActivated) return;
+      releaseActivated = true;
+      releaseVideo.hidden = false;
+      releaseVideo.removeAttribute('hidden');
+      root.classList.remove('is-step','is-cycle');
+      root.classList.add('is-video-release');
+      releaseMark.textContent = '111 / RETURN';
+      requestYouTubeApi();
+    }
+
+    function render() {
+      const now = Date.now();
+      const frame = derive(now);
+      const cycleText = pad(frame.cycle);
+      const valueText = pad(frame.value);
+      const remainingText = duration(frame.remaining);
+      const clockText = clockFormatter.format(new Date(now));
+
+      if (root.dataset.state !== 'held') root.dataset.state = frame.state;
+      countValue.textContent = valueText;
+      countValue.dataset.value = valueText;
+      cycleValue.textContent = cycleText;
+      windowCycle.textContent = cycleText;
+      stateValue.textContent = frame.label;
+      traceValue.textContent = `${cycleText} / ${valueText}`;
+      engineValue.textContent = 'SYNCED';
+      phaseValue.textContent = frame.phase;
+      remainingValue.textContent = remainingText;
+      unitProgress.style.transform = `scaleX(${frame.unitProgress ?? 0})`;
+      clockValue.textContent = clockText;
+      archiveTime.textContent = clockText;
+      archiveDuration.textContent = remainingText;
+      archiveNotes.textContent = `CYCLE ${cycleText} / ${frame.label}`;
+
+      if (frame.state === 'released') activateRelease();
+
+      if (!releaseActivated) {
+        if (lastCycle !== null && lastCycle !== frame.cycle) pulse('cycle');
+        else if (lastValue !== null && lastValue !== frame.value) pulse('step');
+      }
+
+      lastCycle = frame.cycle;
+      lastValue = frame.value;
+    }
+
+    targetValue.textContent = targetFormatter.format(new Date(releaseMs)).toUpperCase().replace(',', ' ·');
+    archiveDate.textContent = archiveDateFormatter.format(new Date(releaseMs)).replaceAll('/', '.');
+    render();
+    setInterval(render, 200);
+  })();
+  </script>
+</body>
+</html>

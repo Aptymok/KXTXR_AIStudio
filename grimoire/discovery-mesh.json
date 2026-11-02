@@ -1,0 +1,264 @@
+{
+  "schema": "KXTXR_DISCOVERY_MESH_V2",
+  "version": "2.0.0",
+  "updated_at": "2026-09-28T18:31:00-06:00",
+  "purpose": "Resolve KXTXR consistently across human search, web crawlers, AI search and multi-agent systems by publishing explicit identity, state, source and authority edges. This improves reconstructibility; it does not guarantee ranking or recommendation.",
+  "entity": {
+    "id": "https://kxtxr.vercel.app/#kxtxr",
+    "schema_type": "MusicGroup",
+    "name": "KXTXR",
+    "canonical_url": "https://kxtxr.vercel.app/",
+    "description": "Musical and audiovisual identity organized around signal, memory, transformation and return.",
+    "human_operator": {
+      "name": "Edwing",
+      "role": "operator / performer / human authorial authority"
+    },
+    "external_observer": {
+      "name": "System Friction Institute",
+      "role": "provenance / observation",
+      "identity_boundary": "not the artist"
+    },
+    "current_phase": {
+      "name": "QUE NO / PRECAMPAIGN",
+      "source": "https://kxtxr.vercel.app/grimoire/ledger.json"
+    }
+  },
+  "identity_edges": [
+    {
+      "relation": "sameAs",
+      "platform": "Spotify",
+      "url": "https://open.spotify.com/artist/5Iwk9h7kNRB8GPNGeiRKGh",
+      "status": "VERIFIED_CANONICAL"
+    },
+    {
+      "relation": "sameAs",
+      "platform": "Apple Music",
+      "url": "https://music.apple.com/mx/artist/kxtxr/6772383279",
+      "status": "VERIFIED_CANONICAL"
+    },
+    {
+      "relation": "sameAs",
+      "platform": "YouTube",
+      "url": "https://www.youtube.com/@kxtxrsignal",
+      "status": "VERIFIED_CANONICAL"
+    },
+    {
+      "relation": "source",
+      "platform": "GitHub",
+      "url": "https://github.com/Aptymok/kxtxr",
+      "status": "OBSERVED_REPOSITORY"
+    }
+  ],
+  "unresolved_identity_edges": [
+    {
+      "platform": "Instagram",
+      "status": "DIRECT_PROFILE_URL_NOT_VERIFIED",
+      "rule": "exclude from sameAs until resolved"
+    },
+    {
+      "platform": "TikTok",
+      "status": "DIRECT_PROFILE_URL_NOT_VERIFIED",
+      "rule": "exclude from sameAs until resolved"
+    }
+  ],
+  "content_nodes": [
+    {
+      "id": "REM618",
+      "relation": "release_lineage",
+      "state": "EMITTED",
+      "url": "https://kxtxr.vercel.app/historical/rem618/",
+      "source": "https://kxtxr.vercel.app/data/releases.json"
+    },
+    {
+      "id": "111",
+      "relation": "release_lineage",
+      "state": "QA_LOCK",
+      "url": "https://kxtxr.vercel.app/artist/",
+      "source": "https://kxtxr.vercel.app/data/releases.json"
+    },
+    {
+      "id": "QUE_NO",
+      "relation": "current_release_field",
+      "state": "PRECAMPAIGN",
+      "url": "https://kxtxr.vercel.app/#queno",
+      "source": "https://kxtxr.vercel.app/campaigns/que-no/representation-engine.json"
+    },
+    {
+      "id": "QUE_NO_07_12",
+      "relation": "current_representation",
+      "state": "MEMORY",
+      "source": "https://kxtxr.vercel.app/campaigns/que-no/representation-engine.json"
+    }
+  ],
+  "canonical_surfaces": [
+    {
+      "url": "https://kxtxr.vercel.app/",
+      "class": "PUBLIC_IDENTITY",
+      "index": true
+    },
+    {
+      "url": "https://kxtxr.vercel.app/artist/",
+      "class": "PUBLIC_ARTIST_EXPERIENCE",
+      "index": true
+    },
+    {
+      "url": "https://kxtxr.vercel.app/historical/rem618/",
+      "class": "HISTORICAL_EVENT",
+      "index": true
+    },
+    {
+      "url": "https://kxtxr.vercel.app/edwing-registry/",
+      "class": "OPERATOR_FIELD",
+      "index": false
+    },
+    {
+      "url": "https://kxtxr.vercel.app/console/",
+      "class": "OPERATOR_CONTROL_PLANE",
+      "index": false,
+      "source": "https://kxtxr.vercel.app/data/control-plane.json"
+    }
+  ],
+  "machine_surfaces": [
+    {
+      "url": "https://kxtxr.vercel.app/llms.txt",
+      "function": "compact AI/search orientation"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/llms-full.txt",
+      "function": "expanded machine-readable project context"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/index.md",
+      "function": "markdown canonical overview"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/.well-known/kxtxr.json",
+      "function": "stable identity manifest"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/site-manifest.json",
+      "function": "public site source map"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/system-map.json",
+      "function": "section → source → technology → authority → fallback map"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/assets.json",
+      "function": "visual asset roles, provenance classes and runtime constraints"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/releases.json",
+      "function": "release lineage state"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/media-manifest.json",
+      "function": "media provenance and usage boundaries"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/visual-system.json",
+      "function": "visual-system contract"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/grimoire/ledger.json",
+      "function": "public state ledger"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/grimoire/kxtxr-grimoire-longitudinal-canon-v3.json",
+      "function": "longitudinal canon"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/campaigns/que-no/representation-engine.json",
+      "function": "current QUE NO representation definition"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/control-plane.json",
+      "function": "control/observation connector contract and authority boundaries"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/regime-transition.json",
+      "function": "experimental KXTXR projection of the SFI Regime Transition Program"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/music-field.json",
+      "function": "sanitized HIVE album metrics, song functions, relational distances and negative spectral space"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/observation-schema.json",
+      "function": "versioned adaptive field catalog for music, representation, RETURN and regime observation"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/knowledge-plane.json",
+      "function": "epistemic provenance map describing how KXTXR reconstructs claims"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/api/kxtxr-context",
+      "function": "unified machine context capsule for authorized/compatible AI clients"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/data/ai-governance.json",
+      "function": "AI observer/field-curator/site-editor authority and mutation policy"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/api/kxtxr-ai",
+      "function": "authenticated structured AI analysis/proposal endpoint"
+    },
+    {
+      "url": "https://kxtxr.vercel.app/api/kxtxr-ai-pr",
+      "function": "authenticated allowlisted JSON-manifest mutation to GitHub draft PR"
+    }
+  ],
+  "indexing": {
+    "html": "Static semantic text remains available without JavaScript.",
+    "json_ld": "MusicGroup + WebSite + WebPage graph on canonical root.",
+    "sitemap": "https://kxtxr.vercel.app/sitemap.xml",
+    "robots": "public identity surfaces crawlable; /console/ and /edwing-registry/ are operator surfaces with noindex",
+    "llm_orientation": [
+      "/llms.txt",
+      "/llms-full.txt",
+      "/index.md"
+    ],
+    "image_policy": "Public root uses a bounded 1080×1350 current human image for large preview. Viewport-scale depth is vector/procedural; the deprecated 600×400 hero is excluded from hero rendering.",
+    "rule": "Discovery infrastructure clarifies identity and sources; it does not imply search-engine ranking, cultural value or platform recommendation."
+  },
+  "authority_and_boundaries": [
+    "KXTXR = artist/system identity",
+    "Edwing = human operator/performer and authorial authority",
+    "SFI = external provenance/observation layer, not the artist",
+    "AI = assisted analysis/code/representation, not autonomous authorial authority",
+    "PUBLICATION ≠ EVIDENCE",
+    "ENGAGEMENT ≠ CAUSALITY",
+    "DISCOVERY ≠ RANKING",
+    "MISSING REMAINS MISSING",
+    "REGIME CANDIDATE ≠ CALIBRATED TRANSITION",
+    "AUDIO RELATION != ARTISTIC QUALITY",
+    "SOURCE != OBSERVATION != DERIVATION != INFERENCE",
+    "AI SITE MUTATION = DRAFT PR, NEVER AUTO-MERGE"
+  ],
+  "do_not_infer": [
+    "unverified booking email",
+    "unverified Instagram profile URL",
+    "unverified TikTok profile URL",
+    "unverified technical rider",
+    "artistic value from engagement metrics",
+    "visual meaning directly from spectral measurements",
+    "unobserved KYRIE | PHOSPHOROS audio state"
+  ],
+  "deployment": {
+    "pipeline": "GITHUB_TO_VERCEL_OBSERVED_OPERATIONAL",
+    "canonical_host": "https://kxtxr.vercel.app/",
+    "last_pipeline_observation_date": "2026-09-26",
+    "revision_rule": "Production revision is verified from GitHub/Vercel status before it is reported as deployed."
+  },
+  "visual_identity": {
+    "asset_registry": "https://kxtxr.vercel.app/data/assets.json",
+    "primary_human_asset": "https://kxtxr.vercel.app/assets/kxtxr/que-no/07-12/ig-03.png",
+    "public_alias": "https://kxtxr.vercel.app/assets/kxtxr/que-no-07-12-hero.png",
+    "runtime_depth": [
+      "WebGL signal field",
+      "SVG architecture",
+      "CSS procedural atmosphere"
+    ],
+    "boundary": "Visual discovery metadata describes representation; it does not establish artistic value or ranking."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "KXTXR_VISUAL_SYSTEM_V1",
+  "updated_at": "2026-09-28T22:11:00-06:00",
+  "invariant": {
+    "identity": "KXTXR",
+    "human_presence": "Edwing / KXTXR",
+    "palette": [
+      "#050505",
+      "#ece7dc",
+      "#b82d32"
+    ],
+    "motifs": [
+      "signal",
+      "memory",
+      "return",
+      "film residue",
+      "technical trace",
+      "human/digital echo"
+    ]
+  },
+  "layers": [
+    {
+      "id": "field",
+      "technology": "WebGL fragment shader",
+      "function": "procedural signal atmosphere",
+      "runtime": "enhancement"
+    },
+    {
+      "id": "architecture",
+      "technology": "SVG/CSS vector grid",
+      "function": "infinite-resolution structural background",
+      "asset": "/assets/system/signal-architecture.svg"
+    },
+    {
+      "id": "atmosphere",
+      "technology": "CSS procedural compositing",
+      "function": "full-bleed depth without viewport-scale raster dependency",
+      "source_master_reference": "KXTXR_QUE_NO_COVER_PROPOSAL_02_3000x3000.png"
+    },
+    {
+      "id": "human_primary",
+      "technology": "high-resolution raster portrait",
+      "function": "recognizable embodied identity",
+      "asset": "/assets/kxtxr/que-no/07-12/ig-03.png",
+      "intrinsic": {
+        "width": 1080,
+        "height": 1350
+      },
+      "constraint": "bounded foreground only"
+    },
+    {
+      "id": "human_variants",
+      "technology": "high-resolution raster portraits",
+      "function": "MEMORY representation alternatives",
+      "assets": [
+        "/assets/kxtxr/que-no/07-12/ig-01.png",
+        "/assets/kxtxr/que-no/07-12/ig-02.png"
+      ]
+    },
+    {
+      "id": "echo",
+      "technology": "CSS mask/blend/parallax",
+      "function": "digital residue",
+      "mask": "/assets/system/signal-mask.svg"
+    },
+    {
+      "id": "type",
+      "technology": "semantic HTML/CSS",
+      "function": "human-readable and indexable content"
+    },
+    {
+      "id": "state",
+      "technology": "JSON hydration",
+      "function": "current campaign and canonical state"
+    },
+    {
+      "id": "que_no_09_10_parallax",
+      "technology": "WebP raster layers + CSS compositing + scroll/pointer parallax",
+      "function": "campaign scene depth for 09/12 and 10/12",
+      "assets": {
+        "09/12": [
+          "/assets/kxtxr/que-no/09-12/bg-room.webp",
+          "/assets/kxtxr/que-no/09-12/figure.webp"
+        ],
+        "10/12": [
+          "/assets/kxtxr/que-no/10-12/bg-room.webp",
+          "/assets/kxtxr/que-no/10-12/cassette-ribbon.webp"
+        ]
+      },
+      "source_ref": "DRIVE:280926_QUENO_09_10_PARALLAX_WEB",
+      "desktop": "foreground enlarged; pointer + scroll separation",
+      "mobile": "full-screen scene; reduced scroll-only parallax",
+      "boundary": "campaign imagery, not evidence"
+    }
+  ],
+  "performance": {
+    "reduced_motion": "disable WebGL motion/parallax while preserving identity and semantic content",
+    "mobile": "exact 100svh scene composition + lower GPU load + no decorative topology SVG",
+    "image_rule": "Never upscale the 1080×1350 human layer to full-bleed viewport coverage."
+  },
+  "rule": "The public surface prioritizes cinematic hierarchy and negative space. Technical provenance remains machine-readable. Advanced effects are residue, never competing foreground layers.",
+  "asset_registry": "/data/assets.json",
+  "presentation": {
+    "version": "CINEMATIC_SHELL_V3",
+    "principle": "one dominant idea per viewport",
+    "desktop": {
+      "scene_height": "100svh",
+      "composition": "cinematic stage with negative space",
+      "simultaneous_visual_planes_max": 3,
+      "planes": [
+        "atmosphere",
+        "subject",
+        "interface"
+      ],
+      "technical_labels": "machine-readable, visually suppressed on public surface",
+      "vector_policy": "residue only; never a competing foreground layer"
+    },
+    "mobile": {
+      "scene_height": "exact 100svh",
+      "scroll_snap": "mandatory",
+      "composition": "one scene per screen",
+      "overflow_strategy": "bounded internal scroll or horizontal carousel inside the active scene",
+      "vector_policy": "hidden or nearly absent",
+      "safe_area": "env(safe-area-inset-*)"
+    }
+  }
+}

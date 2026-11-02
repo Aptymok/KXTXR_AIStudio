@@ -1,0 +1,8 @@
+{
+  "name": "KXTXR · Signal & Control Plane",
+  "description": "KXTXR musical and audiovisual identity, signal film, live transmission, representation engine, and control plane console.",
+  "requestFramePermissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

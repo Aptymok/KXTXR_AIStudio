@@ -1,0 +1,106 @@
+{
+  "schema": "KXTXR_SITE_MANIFEST_V2",
+  "version": "2.0.0",
+  "updated_at": "2026-09-28T22:11:00-06:00",
+  "canonical_url": "https://kxtxr.vercel.app/",
+  "posture": "AI_ASSISTED_HUMAN_GOVERNED_SFI_OBSERVED",
+  "sections": [
+    {
+      "id": "inicio",
+      "role": "identity_entry",
+      "source": "/data/visual-system.json",
+      "asset_primary": "/assets/kxtxr/que-no/07-12/ig-03.png",
+      "asset_alias": "/assets/kxtxr/que-no-07-12-hero.png",
+      "asset_variants": [
+        "/assets/kxtxr/que-no/07-12/ig-01.png",
+        "/assets/kxtxr/que-no/07-12/ig-02.png"
+      ],
+      "full_bleed": "procedural WebGL + SVG + CSS",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "musica",
+      "role": "release_lineage",
+      "source": "/data/releases.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "queno",
+      "role": "active_campaign",
+      "source": "/campaigns/que-no/representation-engine.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "queno-09",
+      "role": "campaign_representation_parallax",
+      "source": "/campaigns/que-no/representation-engine.json",
+      "assets": [
+        "/assets/kxtxr/que-no/09-12/bg-room.webp",
+        "/assets/kxtxr/que-no/09-12/figure.webp"
+      ],
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE",
+      "nav_group": "QUE NO"
+    },
+    {
+      "id": "queno-10",
+      "role": "campaign_representation_parallax",
+      "source": "/campaigns/que-no/representation-engine.json",
+      "assets": [
+        "/assets/kxtxr/que-no/10-12/bg-room.webp",
+        "/assets/kxtxr/que-no/10-12/cassette-ribbon.webp"
+      ],
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE",
+      "nav_group": "QUE NO"
+    },
+    {
+      "id": "live",
+      "role": "performance_evidence_surface",
+      "source": "/data/media-manifest.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "proyecto",
+      "role": "identity_doctrine",
+      "source": "/grimoire/experiment.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "archivo",
+      "role": "persistent_memory",
+      "source": "/grimoire/ledger.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "rider",
+      "role": "technical_boundary",
+      "source": "/data/rider.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    },
+    {
+      "id": "contacto",
+      "role": "verified_routes",
+      "source": "/data/contact.json",
+      "viewport": "100svh",
+      "mobile_mode": "FULL_VIEWPORT_SCENE"
+    }
+  ],
+  "rule": "PUBLIC UI MAY REPRESENT PERSISTED DATA; IT MUST NOT SYNTHESIZE MISSING FACTS.",
+  "system_map": "/data/system-map.json",
+  "asset_registry": "/data/assets.json",
+  "presentation": {
+    "shell": "CINEMATIC_SHELL_V3",
+    "desktop": "100svh scenes / proximity snap / cinematic negative space",
+    "mobile": "100svh scenes / mandatory snap / internal bounded content",
+    "public_metadata": "minimal",
+    "machine_metadata": "preserved in manifests/discovery surfaces"
+  }
+}

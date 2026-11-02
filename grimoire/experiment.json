@@ -1,0 +1,49 @@
+{
+  "schema": "KXTXR_EXPERIMENT_V1",
+  "id": "KXTXR-EXP-001",
+  "title": "KXTXR / Living Grimoire",
+  "state": "QUE_NO_PRECAMPAIGN",
+  "self_description": "KXTXR knows itself as an artistic experiment in emission, observation, residue, transformation and return.",
+  "objective": "Observe whether an artistic signal can preserve identity and accumulate meaningful residue without allowing platform metrics to govern the next act.",
+  "primary_question": "Which representation of QUE NO produces recognition and transmission without allowing platform metrics to govern authorship?",
+  "current_phase": {
+    "name": "QUE NO / REPRESENTATION",
+    "opened_at": "2026-09-26T05:30:00-06:00",
+    "purpose": "Operate 07/12–12/12 as controlled representations: observe exposure, behavior and RETURN, then change at most one primary representation variable when evidence warrants it."
+  },
+  "method": [
+    "emit a bounded signal",
+    "preserve provenance",
+    "wait without filling the interval",
+    "record observed residue",
+    "separate observation from inference",
+    "return to the object",
+    "publish divergence and unresolved questions"
+  ],
+  "instruments": [
+    "E0-R / emission regime",
+    "public Grimoire ledger",
+    "operational logbook",
+    "state snapshots",
+    "retrolongitudinal reading",
+    "SFI return certificates",
+    "QUE NO representation engine",
+    "local-first operator field",
+    "KXTXR Representation Yield (internal heuristic)"
+  ],
+  "boundaries": [
+    "PUBLICATION ≠ EVIDENCE",
+    "ENGAGEMENT ≠ CAUSALITY",
+    "AI OUTPUT ≠ AUTHORIAL AUTHORITY",
+    "SFI CERTIFICATE ≠ TRUTH",
+    "VISUALIZATION ≠ MEASUREMENT",
+    "MISSING REMAINS MISSING",
+    "KRY ≠ PLATFORM ALGORITHM",
+    "LOCAL ENTRY ≠ CANONICAL PERSISTENCE"
+  ],
+  "roles": {
+    "human": "authorship / release / governance",
+    "ai": "assisted composition / analysis / code / representation",
+    "sfi": "external observation / provenance / return"
+  }
+}
